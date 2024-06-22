@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://max" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://max" xmlns:intf="http://max" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://max" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="xml" type="xsd:string"/>
+   <element name="getPayReturn" type="xsd:string"/>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getPayResponse">
+
+      <wsdl:part element="impl:getPayReturn" name="getPayReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPayRequest">
+
+      <wsdl:part element="impl:xml" name="xml">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="RequestHandlerSOA">
+
+      <wsdl:operation name="getPay" parameterOrder="xml">
+
+         <wsdl:input message="impl:getPayRequest" name="getPayRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPayResponse" name="getPayResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="RequestHandlerSOASoapBinding" type="impl:RequestHandlerSOA">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getPay">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPayRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPayResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="RequestHandlerSOAService">
+
+      <wsdl:port binding="impl:RequestHandlerSOASoapBinding" name="RequestHandlerSOA">
+
+         <wsdlsoap:address location="http://localhost:8080/ThirdServerSOA/services/RequestHandlerSOA"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

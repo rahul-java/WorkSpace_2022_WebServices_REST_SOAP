@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+<class table="mst_state" name="hib.StateDTO">
+<id column="state_code" name="state_Code" >
+<generator class="assigned"/>
+</id>
+<property column="state_name" name="state_Name"></property>
+<property column="short_name" name="short_Name"></property>
+</class>
+
+
+</hibernate-mapping>

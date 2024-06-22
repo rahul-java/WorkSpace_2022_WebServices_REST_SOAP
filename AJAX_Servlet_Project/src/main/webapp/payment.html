@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+function getBankDetail()
+{
+	var ifsc=document.getElementById("ifscID").value;
+	var req;
+	alert(ifsc);
+	if (window.XMLHttpRequest)
+  	{
+  	     // code for IE7+, Firefox, Chrome, Opera, Safari
+  	     req=new XMLHttpRequest();
+  	}
+  	else
+  	{    // code for IE6, IE5
+  	     req=new ActiveXObject("Microsoft.XMLHTTP");
+  	 }
+	  
+	  req.onreadystatechange = function() 
+	  {
+		  //alert(req.readyState);
+	    if (req.readyState == 4 && req.status == 200) 
+	    {
+	      document.getElementById("bankDetailID").value = req.responseText;
+	    }
+	  };
+	  req.open("GET", "BankDetail?ifscCode="+ifsc, true);
+	  req.send();
+  }
+  
+function operationUpdate()
+{
+	// var req;    
+	  //if (email == "")
+	 // {
+	    document.getElementById("viewArea").innerHTML = "Rahullllllllllllllllllll";
+	   // return;
+	  //}
+// 	  if (window.XMLHttpRequest)
+//   	{
+//   	     // code for IE7+, Firefox, Chrome, Opera, Safari
+//   	     req=new XMLHttpRequest();
+//   	}
+//   	else
+//   	{    // code for IE6, IE5
+//   	     req=new ActiveXObject("Microsoft.XMLHTTP");
+//   	 }
+	  
+// 	  req.onreadystatechange = function() {
+// 	    if (this.readyState == 4 && this.status == 200) {
+// 	      document.getElementById("viewArea").innerHTML = this.responseText;
+// 	    }
+// 	  };
+// 	  req.open("GET", "UpdateServlet?email="+email, true);
+// 	  req.send();
+	}
+
+</script>
+</head>
+<body>
+
+<form action="PayDetails" method="post">
+<table bgcolor="cyan" border="3">
+<tr><td>Amount : </td> <td><input type="text" id="" name="amount"> </td></tr>
+<tr><td>Name : </td> <td><input type="text" id="" name="name"> </td></tr>
+<tr><td>Bank IFSC : </td> <td><input type="text" id="ifscID" name="ifsc" size="11" onblur="getBankDetail()"> </td></tr>
+<tr><td>Bank Detail :</td><td><input type="text" readonly="readonly" id="bankDetailID" name="address"> </td></tr>
+<tr><td align="center"><input type="submit" value="Pay Now"> </td><td align="center"><a href="ViewServlet" onclick="operationUpdate()">View</a></td></tr>
+
+</table>
+
+</form>
+
+
+<br>
+<br>
+
+</body>
+</html>

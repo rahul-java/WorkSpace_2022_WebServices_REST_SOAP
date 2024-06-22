@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from RequesthandlerSOAService WSDL service -->
+
+  <service name="RequesthandlerSOA" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://max"/>
+      <parameter name="wsdlServiceElement" value="RequesthandlerSOAService"/>
+      <parameter name="schemaQualified" value="http://max"/>
+      <parameter name="wsdlServicePort" value="RequesthandlerSOA"/>
+      <parameter name="className" value="max.RequesthandlerSOA"/>
+      <parameter name="wsdlPortType" value="RequesthandlerSOA"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:retNS="http://max" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getstateList" qname="getstateList" returnQName="retNS:getstateListReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:retNS="http://max" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFacto" qname="getFacto" returnQName="retNS:getFactoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://max" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:no" type="tns:string"/>
+      </operation>
+      <operation xmlns:retNS="http://max" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="gettt" qname="gettt" returnQName="retNS:getttReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:retNS="http://max" xmlns:rtns="http://max" name="getUserDetail" qname="getUserDetail" returnQName="retNS:getUserDetailReturn" returnType="rtns:User" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="getFacto getUserDetail getstateList gettt"/>
+
+      <typeMapping xmlns:ns="http://max" qname="ns:User" type="java:max.User" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
